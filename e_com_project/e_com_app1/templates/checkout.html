@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block titel %}iKart{% endblock titel %}
+{% block head %}{% endblock head %}
+
+{% block body1 %}
+{% if user.is_authenticated %}
+<div class="container-fluid py-4">
+    <div class="row align-items-md-stretch">
+        <div class="col-md-6">
+          <div class="h-100 p-5 text-white bg-dark rounded-3">
+            <h2>ikart summary</h2>
+            <table class="table" style="color: white;">
+                <thead>
+                </thead>
+                <tbody>
+                  <tr style="font-size: 1rem;">
+                    <td style="font-family:sans-serif;font-size: 1rem;"><b>iKart Item</b></td>
+                    {% for cart in cart %}
+                    <td>{{cart.product.titel}}</td>
+                    {% endfor %}
+                  </tr>
+                  <tr style="font-size: 1rem;">
+                    <td style="font-family:sans-serif;font-size: 1rem;"><b>Quantity</b></td>
+                    {% for cart in cart %}
+                    <td>{{cart.quantity}}</td>
+                    {% endfor %}
+                  </tr>
+                  <tr style="font-size: 1rem;">
+                    <td style="font-family:sans-serif;font-size: 1rem;"><b>Price</b></td>
+                    {% for i in pa %}
+                    <td>{{i}}</td>
+                    {% endfor %}
+                  </tr>
+                </tbody>
+              </table>
+            <!-- {% for cart in cart %}
+            <p>{{cart.product.titel}} ||quantity : {{cart.quantity}}|| ₹{{cart.item_cost}}</p>
+            {%endfor%} -->
+            <span style="color: whitesmoke;font-size: 1.5rem;"><a href="{% url 'kart' %}" class="btn btn-outline-light" type="button">edit ikart</a>&nbsp;&nbsp;&nbsp;  Total Amount : ₹ {{amount}}</span>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="h-100 p-5 bg-light border rounded-3">
+            <h2>shipping Address for {{user.username}}</h2>
+            {% for customer in customer %}
+            <p><span>Name : </span> {{customer.name}}</p>
+            <p><span>locality : </span> {{customer.locality}}</p>
+            <p><span>city : </span> {{customer.city}}</p>
+            <p><span>pincode : </span> {{customer.pincode}}</p>
+            <p><span>mobile_number : </span> {{customer.mobile_number}}</p>
+            {% endfor %}
+            <a href="{% url 'edit_profile' user.id %}" class="btn btn-outline-success" type="button">edit address</a>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="h-100 p-5 text-dark bg-light rounded-3">
+            <h2>Paymet Method</h2>
+            <form action="{% url 'payment_page' %}" method="get">
+              <input type="radio" id="Cash on Delivery" name="payment" value="Cash on Delivery">
+              <label for="Cash on Delivery"><h2 href="" class="btn btn-lg btn-outline-success" >Cash on Delivery</h2></label><br>
+              <input type="radio" id="Net Banking" name="payment" value="Net Banking">
+              <label for="Net Banking"><h2 href="" class="btn btn-lg btn-outline-success">Net Banking</h2></label><br>
+              <input type="radio" id="UPI Payment" name="payment" value="UPI Payment">
+              <label for="UPI Payment"><h2 href="" class="btn btn-lg btn-outline-success">UPI Payment</h2></label>
+              <br>
+              <input type="submit" class="btn btn-outline-primary" value="continue" style="margin: 30px;"></input>
+            </form>
+          </div>
+        </div>
+      </div>
+</div>
+{% block bodyend %}
+<script>
+
+</script>
+{% endblock bodyend %}
+{% else %}
+
+
+{% endif %}
+{% endblock body1 %}

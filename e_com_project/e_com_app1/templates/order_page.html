@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block titel %}iKart{% endblock titel %}
+{% block head %}{% endblock head %}
+
+{% block body1 %}
+{% if user.is_authenticated %}
+<div class="container-fluid py-4">
+  <div class="row align-items-md-stretch">
+    <div class="col-md-8">
+      <div class="h-100 p-5 text-white bg-dark rounded-3">
+        <h2>ikart order summary</h2>
+        <table class="table" style="color: white;">
+          <thead>
+          </thead>
+          <tbody>
+            <tr style="font-size: 1rem;">
+              <td style="font-family:sans-serif;font-size: 1rem;"><b>iKart Item</b></td>
+              {% for oreder in oreder %}
+              <td>{{oreder.product.titel}}</td>
+              {% endfor %}
+            </tr>
+            <tr style="font-size: 1rem;">
+              <td style="font-family:sans-serif;font-size: 1rem;"><b>Quantity</b></td>
+              {% for oreder in oreder %}
+              <td>{{oreder.quantity}}</td>
+              {% endfor %}
+            </tr>
+            <tr style="font-size: 1rem;">
+              <td style="font-family:sans-serif;font-size: 1rem;"><b>price</b></td>
+              {% for oreder in oreder %}
+              <td>({{oreder.product.discount_price}} * {{oreder.quantity}}) {{oreder.item_cost}}</td>
+              {% endfor %}
+            </tr>
+            <tr style="font-size: 1rem;">
+              <td style="font-family:sans-serif;font-size: 1rem;"><b>Order Date</b></td>
+              {% for oreder in oreder %}
+              <td>{{oreder.ordered_date}}</td>
+              {% endfor %}
+            </tr>
+            <tr style="font-size: 1rem;">
+              <td style="font-family:sans-serif;font-size: 1rem;"><b>Payment Method</b></td>
+              {% for oreder in oreder %}
+              <td>{{oreder.payment_method}}</td>
+              {% endfor %}
+            </tr>
+            <tr style="font-size: 1rem;">
+              <td style="font-family:sans-serif;font-size: 1rem;"><b>Order status</b></td>
+              {% for oreder in oreder %}
+              <td>{{oreder.status}}</td>
+              {% endfor %}
+            </tr>
+
+            <!-- <tr style="font-size: 1rem;">
+                  <td style="font-family:sans-serif;font-size: 1rem;"><b>Price</b></td>
+                  {% for i in pa %}
+                  <td>{{i}}</td>
+                  {% endfor %}
+                </tr> -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="h-100 p-5 bg-light border rounded-3">
+        <h2>order Address for {{user.username}}</h2>
+        {% for customer in customer %}
+        <p><span>Name : </span> {{customer.name}}</p>
+        <p><span>locality : </span> {{customer.locality}}</p>
+        <p><span>city : </span> {{customer.city}}</p>
+        <p><span>pincode : </span> {{customer.pincode}}</p>
+        <p><span>mobile_number : </span> {{customer.mobile_number}}</p>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+<!-- ============= -->
+
+
+
+
+{% block bodyend %}
+<script>
+
+</script>
+{% endblock bodyend %}
+{% else %}
+
+
+{% endif %}
+{% endblock body1 %}

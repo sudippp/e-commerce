@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block titel %}iKart{% endblock titel %}
+{% block head %}{% endblock head %}
+
+{% block body1 %}
+
+
+{% if user.is_authenticated %}
+<div class="conatiner my-4 text-center" style="justify-content: space-between;">
+  <div class="row">
+    <div class="col " style="display: flex; font-size: .8rem; padding: 20px;justify-content: space-between;">
+      {% for cart in cart %}
+      <div style="text-align: center;">
+        <img src="{{cart.product.product_img.url}}" class="img-thumbnail" alt="..." style="height: 35vh;margin: 0px">
+        <h5 class="card-title" style="font-size: 1rem;">{{cart.product.titel}}</h5><span></span>
+        <p class="card-text">{{cart.product.discount_price}} <span
+            style="color: rgb(7, 53, 123) ; margin-left: 4px;">Quantity : {{cart.quantity}}</span></p>
+        <a href="{% url 'remove_item' cart.id %}" class="btn btn-primary">remove</a>
+      </div>
+      {% endfor %}
+    </div>
+    <!-- Billing Section -->
+    <div class="col " style="display: flex; font-size: .8rem; padding: 20px;justify-content: center;">
+      <div style="text-align: center; ">
+        <h5 class="card-title" style="font-size: 1.5rem;">Billing Amount:</h5><span></span>
+        <!-- <p class="card-text" style="font-size: 1rem">Item : {{cart.product.titel}}<span style="color: rgb(7, 53, 123) ; margin-left: 4px;font-size: 1.5rem">₹{{cart.product.discount_price}}</span></p> -->
+        <table class="table">
+          <thead>
+          </thead>
+          <tbody>
+            <tr style="font-size: 1rem;">
+              <td style="font-family:sans-serif;font-size: 1rem;"><b>iKart Item</b></td>
+              {% for cart in cart %}
+              <td>{{cart.product.titel}}</td>
+              {% endfor %}
+            </tr>
+            <tr style="font-size: 1rem;">
+              <td style="font-family:sans-serif;font-size: 1rem;"><b>Quantity</b></td>
+              {% for cart in cart %}
+              <td>{{cart.quantity}}</td>
+              {% endfor %}
+            </tr>
+            <tr style="font-size: 1rem;">
+              <td style="font-family:sans-serif;font-size: 1rem;"><b>Price</b></td>
+              {% for i in pa %}
+              <td>{{i}}</td>
+              {% endfor %}
+            </tr>
+          </tbody>
+        </table>
+
+
+        <h1 class="card-text" style="font-size: 2rem ;color: rgb(15, 37, 183);">Total Amount :<span
+            style="color: rgb(7, 53, 123) ; margin-left: 4px;font-size: 2rem">₹{{amount}}</span></h1>
+
+        <span></span><a href="{% url 'checkout' %}" class="btn btn-lg btn-success" style="text-decoration: none;">Place Order</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% block bodyend %}
+<script>
+
+</script>
+{% endblock bodyend %}
+{% else %}
+
+
+{% endif %}
+{% endblock body1 %}

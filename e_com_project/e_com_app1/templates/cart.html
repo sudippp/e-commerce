@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block titel %}iKart{% endblock titel %}
+{% block head %}{% endblock head %}
+
+{% block body1 %}
+
+
+{% if user.is_authenticated %}
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <div class="card" style="width: 18rem;">
+                <img src="{{product.product_img.url}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">{{product.titel}} ₹{{product.discount_price}}</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+        </div>
+        <div class="col-6">
+            <div class="card" style="width: 18rem;">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">
+                    <p>Total Amount :</p>
+                  </li>
+                  <li class="list-group-item">Amount : ₹{{product.discount_price}}</li>
+                  <li class="list-group-item">A third item</li>
+                </ul>
+              </div>
+        </div>
+    </div>
+</div>
+
+
+{% else %}
+
+
+{% endif %}
+{% endblock body1 %}

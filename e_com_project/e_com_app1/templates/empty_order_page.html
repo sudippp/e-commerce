@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block titel %}iKart{% endblock titel %}
+{% block head %}{% endblock head %}
+
+{% block body1 %}
+
+
+{% if user.is_authenticated %}
+<div class="container-fluid py-4">
+    <div class="row align-items-md-stretch">
+      <div class="col-md-8">
+        <div class="h-100 p-5 text-white bg-dark rounded-3">
+          <h2 style="text-align: center;">No order Placed !!</h2>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="h-100 p-5 bg-light border rounded-3">
+            <img src="{% static 'images/empty_cart.png' %}" alt="" style="height: 15vh;width: 30vw;" class="img-thumbnail justify-content-center">
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% else %}
+
+{% endif %}
+{% endblock body1 %}

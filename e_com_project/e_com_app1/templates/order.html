@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block titel %}iKart{% endblock titel %}
+{% block head %}{% endblock head %}
+
+{% block body1 %}
+
+
+{% if user.is_authenticated %}
+<div class="container my-4">
+  <div class="row">
+    <div class="row featurette">
+      <div class="col-md-7">
+        <h2 class="featurette-heading">{{product.titel}}<span class="text-muted">It’ll blow your mind.</span></h2>
+        <p class="lead"><span style="color: blue">Description :</span> {{product.description}}</p>
+        <div class="row">
+          <div class="col">
+            <span>
+              <h1>selling price</h1>
+              <p class="lead" style="text-decoration: line-through solid rgb(68, 68, 68);">₹{{product.selling_price}}
+              </p>
+          </div>
+          <div class="col">
+            <h1>offer price <p class="lead">₹{{product.discount_price}}</p>
+            </h1>
+          </div>
+        </div>
+
+        <div class="card-body" style="display: flex">
+          <div style="margin: 2px;">
+            <form action="{% url 'cart' product.id %}" method="get">
+              <label for="quantity">Quantity</label>
+              <input type="number" class="btn btn-secondary" name="quantity" value="1" min="1">
+              <input type="submit" class="btn btn-warning text-center" value="Add to Kart"></input>
+          </div>
+          <div style="margin: 2px;">
+            <a href="#" class="btn btn-primary text-center">BUY NOW</a>
+          </div>
+        </form>
+        </div>
+      </div>
+      <div class="col-md-5 ">
+        <div class="card " style="width: 18rem;">
+          <img src="{{product.product_img.url}}" class="card-img-top" alt="...">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% else %}
+
+
+{% endif %}
+{% endblock body1 %}

@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block titel %}iKart{% endblock titel %}
+{% block head %}
+<style>
+    .helptext{
+        color: rgb(3, 64, 64);
+    }
+    ul{
+        color: rgb(3, 64, 64);
+    }
+    p label{
+        color: #03398f;
+    }
+    label{
+        color: #03398f;
+    }
+</style>
+{% endblock head %}
+
+{% block body1 %}
+
+
+
+<div class="container">
+    <div class="row text-center">
+        <div class="col-4">
+            <h1 style="font-size: 2rem;">welcome <span style="text-transform: uppercase;">{{ user.username }}</span></h1>
+            <a href="" class="btn-lg text-center btn btn-primary" style="font-size: 2rem;">Your Profile</a>
+            <p style="font-size: 1.5rem;">Name : {{customer.name}}</p>
+            <p style="font-size: 1.5rem;">Address : {{customer.locality}}</p>
+            <p style="font-size: 1.5rem;">city : {{customer.city}}</p>
+            <p style="font-size: 1.5rem;">pincode : {{customer.pincode}}</p>
+            <p style="font-size: 1.5rem;">mobile_number : {{customer.mobile_number}}</p>
+
+        </div>
+        <div class="col-8">
+            <div class="container-fluid">
+                <h1 style="text-align:center;color: #1c60a7;font-size: 2rem;">Update your Profile</h1>
+                <div class="row">
+                    <div class="col-2"></div>
+                    <div class="col-8 p-2 mx-2 my-2" style="background-color: rgb(191, 191, 211)">
+                        {% if messages %}
+                        {% for messages in messages %}
+                        <div class="alert alert-success text-center" role="alert">
+                            {{messages}}
+                        </div>
+                        {% endfor %}
+                        {% endif %}
+                        <form action="" method="post" novalidate>
+                            {% csrf_token %}
+            
+                            <!-- <label for="user">UserName:</label><br>
+                            <input type="text" value="{{user.username}}" name="user">
+                            <br> -->
+                            <label for="name">name:</label><br>
+                            <input type="text"  name="name">
+                            <br>
+                            <label for="locality">locality:</label><br>
+                            <input type="text" name="locality">
+                            <br>
+                            <label for="city">city:</label><br>
+                            <input type="text"  name="city">
+                            <br>
+                            <label for="pincode">pincode:</label><br>
+                            <input type="number"  name="pincode">
+                            <br>
+                            <label for="mobile_number">mobile_number:</label><br>
+                            <input type="number"  name="mobile_number">
+                            
+                   
+                            <input type="submit" value="submit" class="btn btn-primary btn-sm">
+                        </form>
+            
+                    </div>
+                    <div class="col-2"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body1 %}
