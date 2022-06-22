@@ -5,13 +5,10 @@
 
 {% block body1 %}
 
-{% if user.is_authenticated %}
 <div class="conatiner my-4 text-center" style="justify-content: space-between;">
     <div class="row">
         <div class="col " style="display: flex; font-size: .8rem; padding: 20px;justify-content: space-between;">
-
             {% for product in product %}
-
             <div style="text-align: center;">
                 <a href="{% url 'order' product.id %}" style="text-decoration: None">
                     <img src="{{product.product_img.url}}" class="img-thumbnail" alt="..."
@@ -20,15 +17,8 @@
                     <p class="card-text" style="font-size: 1rem;">₹{{product.discount_price}}</p>
                 </a>
             </div>
-
             {% endfor %}
-
-            
         </div>
     </div>
 </div>
-{% else %}
-
-
-{% endif %}
 {% endblock body1 %}

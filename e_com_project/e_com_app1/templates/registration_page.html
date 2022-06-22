@@ -37,8 +37,11 @@
             {% endif %}
             <form action="" method="post" novalidate>
                 {% csrf_token %}
-                {{fm.as_p}}
-                <input type="submit" value="submit" class="btn btn-lg btn-primary">
+                <table>
+                    {{fm.as_table}}
+                </table>
+                
+                <input type="submit" value="submit" class="btn btn-md btn-primary">
             </form>
 
         </div>
