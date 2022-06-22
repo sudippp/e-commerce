@@ -1,5 +1,6 @@
 from tkinter.messagebox import NO
 from django.shortcuts import render, redirect
+from django.http import Http404
 from .forms import *
 from .models import *
 from django.contrib import messages
@@ -60,6 +61,13 @@ def add_profile(request,id):
 
 def edit_profile(request,id):
     obj = User.objects.get(id=id)
+
+    cs = Customer.objects.filter(user=obj)
+    if len(cs) == 0:
+        return render (request,'registration/empty_edit_profile.html')
+    
+    # if not Customer.objects.get(user=obj) :
+    #     raise Http404("Poll does not exist")
     customer = Customer.objects.get(user=obj)
     fm=CustomerForm(request.POST or None,instance=customer)
     context={'fm':fm}

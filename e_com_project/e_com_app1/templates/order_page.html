@@ -9,7 +9,7 @@
   <div class="row align-items-md-stretch">
     <div class="col-md-8">
       <div class="h-100 p-5 text-white bg-dark rounded-3">
-        <h2>ikart order summary</h2>
+        <h2 style="text-align: center;">ikart order summary</h2>
         <table class="table" style="color: white;">
           <thead>
           </thead>
@@ -27,7 +27,7 @@
               {% endfor %}
             </tr>
             <tr style="font-size: 1rem;">
-              <td style="font-family:sans-serif;font-size: 1rem;"><b>price</b></td>
+              <td style="font-family:sans-serif;font-size: 1rem;"><b>Total Price</b></td>
               {% for oreder in oreder %}
               <td>({{oreder.product.discount_price}} * {{oreder.quantity}}) {{oreder.item_cost}}</td>
               {% endfor %}
@@ -50,26 +50,19 @@
               <td>{{oreder.status}}</td>
               {% endfor %}
             </tr>
-
-            <!-- <tr style="font-size: 1rem;">
-                  <td style="font-family:sans-serif;font-size: 1rem;"><b>Price</b></td>
-                  {% for i in pa %}
-                  <td>{{i}}</td>
-                  {% endfor %}
-                </tr> -->
           </tbody>
         </table>
       </div>
     </div>
     <div class="col-md-4">
       <div class="h-100 p-5 bg-light border rounded-3">
-        <h2>order Address for {{user.username}}</h2>
+        <h2>Order Address For <span style="color: #2874f0 ;">{{user.username}}</span></h2>
         {% for customer in customer %}
-        <p><span>Name : </span> {{customer.name}}</p>
-        <p><span>locality : </span> {{customer.locality}}</p>
-        <p><span>city : </span> {{customer.city}}</p>
-        <p><span>pincode : </span> {{customer.pincode}}</p>
-        <p><span>mobile_number : </span> {{customer.mobile_number}}</p>
+        <p style="font-size: 1rem;font-family:sans-serif;"><span>Name : </span> {{customer.name}}</p>
+        <p style="font-size: 1rem;font-family:sans-serif;"><span>locality : </span> {{customer.locality}}</p>
+        <p style="font-size: 1rem;font-family:sans-serif;"><span>city : </span> {{customer.city}}</p>
+        <p style="font-size: 1rem;font-family:sans-serif;"><span>pincode : </span> {{customer.pincode}}</p>
+        <p style="font-size: 1rem;font-family:sans-serif;"><span>mobile_number : </span> {{customer.mobile_number}}</p>
         {% endfor %}
       </div>
     </div>

@@ -9,7 +9,7 @@
     <div class="row align-items-md-stretch">
         <div class="col-md-6">
           <div class="h-100 p-5 text-white bg-dark rounded-3">
-            <h2>ikart summary</h2>
+            <h2 style="text-align: center;">ikart summary</h2>
             <table class="table" style="color: white;">
                 <thead>
                 </thead>
@@ -42,20 +42,22 @@
         </div>
         <div class="col-md-3">
           <div class="h-100 p-5 bg-light border rounded-3">
-            <h2>shipping Address for {{user.username}}</h2>
+            <h2 style="text-align: center;">Shipping Address For <span style="color: #2874f0 ;">{{user.username}}</span></h2>
+            <br>
             {% for customer in customer %}
-            <p><span>Name : </span> {{customer.name}}</p>
-            <p><span>locality : </span> {{customer.locality}}</p>
-            <p><span>city : </span> {{customer.city}}</p>
-            <p><span>pincode : </span> {{customer.pincode}}</p>
-            <p><span>mobile_number : </span> {{customer.mobile_number}}</p>
+            <p style="font-size: 1rem;font-family:sans-serif;"><span>Name : </span> {{customer.name}}</p>
+            <p style="font-size: 1rem;font-family:sans-serif;"><span>locality : </span> {{customer.locality}}</p>
+            <p style="font-size: 1rem;font-family:sans-serif;"><span>city : </span> {{customer.city}}</p>
+            <p style="font-size: 1rem;font-family:sans-serif;"><span>pincode : </span> {{customer.pincode}}</p>
+            <p style="font-size: 1rem;font-family:sans-serif;"><span>mobile_number : </span> {{customer.mobile_number}}</p>
             {% endfor %}
             <a href="{% url 'edit_profile' user.id %}" class="btn btn-outline-success" type="button">edit address</a>
           </div>
         </div>
         <div class="col-md-3">
           <div class="h-100 p-5 text-dark bg-light rounded-3">
-            <h2>Paymet Method</h2>
+            <h2 style="text-align: center;margin: 5px;">Paymet Method</h2>
+            <br>
             <form action="{% url 'payment_page' %}" method="get">
               <input type="radio" id="Cash on Delivery" name="payment" value="Cash on Delivery">
               <label for="Cash on Delivery"><h2 href="" class="btn btn-lg btn-outline-success" >Cash on Delivery</h2></label><br>
